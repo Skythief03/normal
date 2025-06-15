@@ -1,16 +1,19 @@
 cmake_minimum_required(VERSION 3.15)
-project(AutoLinkDemo)
-
 # MSVC 编码设置
 if (MSVC)
     add_compile_options(/utf-8)
 endif()
-
 # 获取当前目录名称作为目标名
 get_filename_component(APP_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
-
+project(${APP_NAME})
 # 添加可执行文件
 add_executable(${APP_NAME} main.cpp)
+
+set_target_properties(${APP_NAME} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${APP_NAME}"
+        LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${APP_NAME}"
+        ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/${APP_NAME}"
+)
 
 # 链接 core 库（静态或接口库）
 target_link_libraries(${APP_NAME} PRIVATE core)
