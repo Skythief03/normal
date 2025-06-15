@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 project(MultiProjectWorkspace)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # 设置编译输出路径为顶层目录下的 build/
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
